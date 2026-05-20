@@ -7,10 +7,9 @@ import org.openqa.selenium.WebElement;
 import utilities.GlobalVariables;
 
 public class GreenKartObjects {
-
-	GlobalVariables gVar;
 	
 	WebDriver driver;
+	GlobalVariables gVar;
 	
 	public GreenKartObjects(WebDriver driver, GlobalVariables gVar)	{
 		this.driver = driver;
@@ -35,6 +34,6 @@ public class GreenKartObjects {
 		WebElement productList = driver.findElement(product);
 		String items = productList.getText();
 		gVar.CartItem = items.split("-")[0].trim();
-		System.out.println("CartItem  " + gVar.CartItem);
+		System.out.println("CartItem  " +gVar.CartItem);
 	}
 }

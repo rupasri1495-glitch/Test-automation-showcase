@@ -11,30 +11,29 @@ import org.testng.Assert;
 import utilities.GlobalVariables;
 
 public class TopDealsObject {
-	
+
+	WebDriver driver;
 	GlobalVariables gVar;
-	public String DealItem;
-	public String CartItem;
-	
-	public TopDealsObject(GlobalVariables gVar)	{
-		
+	public TopDealsObject(WebDriver driver, GlobalVariables gVar)	{
+		this.driver = driver;
 		this.gVar = gVar;
 	}
+	
 
 	By topDeals = By.linkText("Top Deals");
 	By searchItem = By.xpath("//input[@id='search-field']");
 	By dealItem = By.xpath("//tbody/tr/td[1]");
 
 	public void topDealslink() {
-		gVar.driver.findElement(By.linkText("Top Deals")).click();
+		driver.findElement(By.linkText("Top Deals")).click();
 	}
 
 	public void searchItem(String item) {
-		gVar.driver.findElement(By.xpath("//input[@id='search-field']")).sendKeys(item);
+		driver.findElement(By.xpath("//input[@id='search-field']")).sendKeys(item);
 	}
 
 	public void itemResult() {
-		gVar.DealItem = gVar.driver.findElement(By.xpath("//tbody/tr/td[1]")).getText();
+		gVar.DealItem = driver.findElement(By.xpath("//tbody/tr/td[1]")).getText();
 		System.out.println("DealItem  " + gVar.DealItem);
 	}
 
@@ -43,14 +42,13 @@ public class TopDealsObject {
 	}
 
 	public void closeBrowser() {
-		gVar.driver.quit();
-	}
-	
-	public void screenNavigation() {
-		Set<String> wins = gVar.driver.getWindowHandles();
-		List<String> win = new ArrayList<>(wins);
-		gVar.driver.switchTo().window(win.get(1));
+		driver.quit();
 	}
 
-	
+	public void screenNavigation() {
+		Set<String> wins = driver.getWindowHandles();
+		List<String> win = new ArrayList<>(wins);
+		driver.switchTo().window(win.get(1));
+	}
+
 }

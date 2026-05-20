@@ -1,29 +1,23 @@
 package stepDefinitions;
 
-import java.time.Duration;
-
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageObjects.TopDealsObject;
 import utilities.GlobalVariables;
 
 public class TopDealsSteps {
-	
-	GlobalVariables gVar;
+
 	TopDealsObject topDeals;
+	GlobalVariables gVar;
 
 	public TopDealsSteps(GlobalVariables gVar) {
 		this.gVar = gVar;
 	}
-	
-	
+
 	@Then("navigate to Top Deals screen")
-	public void navigate_to_top_deals_screen(){
-		topDeals = new TopDealsObject(gVar);
+	public void navigate_to_top_deals_screen() {
+		topDeals = new TopDealsObject(gVar.driver, gVar);
 		topDeals.topDealslink();
-		new WebDriverWait(gVar.driver, Duration.ofSeconds(50));
 		topDeals.screenNavigation();
 	}
 
