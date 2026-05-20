@@ -7,5 +7,5 @@ Feature: Top deals matches with applicable items in home page
     Then navigate to Top Deals screen
     When the item "Tomato" is Searched in searchbar in deals page
     Then the item is list in the result of deals page
-    And item "Tomato" is displayed in both screen
+    And item is displayed in both screen
     And close the browser
